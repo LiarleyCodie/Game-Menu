@@ -7,24 +7,48 @@ const menu = {
   lineHeight: 5,
   indicatorPosition: 0,
   options: [
-    { id: 0, y: 0, title: "START" },
-    { id: 1, y: 0, title: "LOAD" },
-    { id: 2, y: 0, title: "OPTIONS" },
-    { id: 3, y: 0, title: "QUIT" },
+    {
+      y: undefined,
+      title: "START",
+      action: function () {
+        console.log("[Start] Let's start the game")
+      }
+    },
+    {
+      y: undefined,
+      title: "LOAD",
+      action: function () {
+        console.log("[Load] Okay, we'll begin from a before moment")
+      }
+    },
+    {
+      y: undefined,
+      title: "OPTIONS",
+      action: function () {
+        console.log("[Options] What you wanna change?")
+      }
+    },
+    {
+      y: undefined,
+      title: "QUIT",
+      action: function () {
+        console.log("[Quit] Astalavista Baby!")
+      }
+    },
   ],
-  draw: function() {
+  draw: function () {
     for (let i = 0; i < this.options.length; i++) {
       this.options[i].y = this.position.y + (this.fontSize * (i + 1) + (this.lineHeight * i + 1))
 
       ctx.fillStyle = "white"
       ctx.font = `${this.fontSize}px ${this.fontFamily}`
       ctx.fillText(
-        this.options[i].title, 
+        this.options[i].title,
         this.position.x, this.options[i].y
-        )
+      )
     }
   },
-  update: function() {
+  update: function () {
     menuIndicator.draw()
     menuIndicator.update(this.position.x - 32, this.options[this.indicatorPosition].y - 16)
   }
