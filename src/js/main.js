@@ -3,10 +3,13 @@ const game = {
   ctx: this.canvas.getContext("2d"),
   running: false,
   loop: undefined,
-  initialize: function (width, height) {
+  currentFrame: 0,
+  initialize: function (width, height, bilinearFilter = false) {
     this.canvas.width = width
     this.canvas.height = height
-    this.ctx.imageSmoothingEnabled = false
+    this.ctx.imageSmoothingEnabled = bilinearFilter
+    if (!bilinearFilter) this.canvas.style.imageRendering = "pixelated"
+
   },
   fluxcontrol: function (runEl, stopEl, create, update) {
     if (runEl && stopEl) {
@@ -33,17 +36,14 @@ const game = {
             this.running = false
             console.log("[STOPPED!]")
           }
-        } else {
-          console.log("You cannot use the `fluxcontrol()` method before declare the `run` and `stop` elements!")
-          console.log("Declare then as HTML elements using: `run` for the run button element and `stop` for the stop button element.")
         }
       }
     }
-  }
+  },
 }
 const ctx = game.ctx
 const runEl = document.querySelector("#run")
 const stopEl = document.querySelector("#stop")
 
-game.initialize(520, 448)
+game.initialize(520, 448, false)
 game.fluxcontrol(runEl, stopEl, create, update)

@@ -16,7 +16,6 @@ body {
 canvas {
   margin: 1rem;
   border: 1px solid black;
-  image-rendering: pixelated;
 }
 
 button {
