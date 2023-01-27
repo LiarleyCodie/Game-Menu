@@ -5,6 +5,12 @@
 Look for the property `options` what is an array of objects. Inside this array insert an new object in any order.
 The new object need to be similiar to the anothers objects with already exists, containing all same keys and values (with exception of title, what can be anything, and the action function content).
 
+:closed_book: Main properties explanation:
+- `x` and `y` properties will set the position of all the menu options, __modify to see how it's works__.
+- `fontSize` will set the text size shown.
+- `fontFamily` will set the font family of all texts.
+- `lineHeight` will set the spacement between each options.
+
 :closed_book: Explanation of the properties from an option object:
 - `y` property inside the object is necessary. The value of this property is used for set the indicator position.
 - `title` will set the text of this option when you start the menu (text which will be shown).
