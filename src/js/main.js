@@ -3,6 +3,7 @@ const game = {
   ctx: this.canvas.getContext("2d"),
   running: false,
   loop: undefined,
+  FPS: 30,
   currentFrame: 0,
   initialize: function (width, height, bilinearFilter = false) {
     this.canvas.width = width
@@ -39,11 +40,26 @@ const game = {
         }
       }
     }
-  },
+  }
 }
 const ctx = game.ctx
 const runEl = document.querySelector("#run")
 const stopEl = document.querySelector("#stop")
 
 game.initialize(520, 448, false)
-game.fluxcontrol(runEl, stopEl, create, update)
+game.fluxcontrol(runEl, stopEl, create, loop)
+
+var lastRender = 0
+const FPS = 30
+function loop(timestamp) {
+  const delta = timestamp - lastRender
+
+  if (delta < 1000 / FPS) {
+    game.loop = requestAnimationFrame(loop, delta - FPS)
+    return
+  }
+
+  update()
+
+  game.loop = requestAnimationFrame(loop)
+}

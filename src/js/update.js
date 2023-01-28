@@ -3,6 +3,4 @@ function update() {
   background.draw()
   menu.update()
   menu.draw()
-
-  game.loop = requestAnimationFrame(update)
 }

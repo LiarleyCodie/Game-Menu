@@ -3,7 +3,7 @@ const menu = {
     x: 100, y: 130
   },
   fontSize: 24,
-  fontFamily: "open sans condensed",
+  fontFamily: "monospace",
   lineHeight: 5,
   indicatorPosition: 0,
   options: [
@@ -11,28 +11,28 @@ const menu = {
       y: undefined,
       title: "START",
       action: function () {
-        console.log("[Start] Let's start the game")
+        alert("[Start] Let's start the game")
       }
     },
     {
       y: undefined,
       title: "LOAD",
       action: function () {
-        console.log("[Load] Okay, we'll begin from a before moment")
+        alert("[Load] Okay, we'll begin from a before moment")
       }
     },
     {
       y: undefined,
       title: "OPTIONS",
       action: function () {
-        console.log("[Options] What you wanna change?")
+        alert("[Options] What you wanna change?")
       }
     },
     {
       y: undefined,
       title: "QUIT",
       action: function () {
-        console.log("[Quit] Astalavista Baby!")
+        alert("[Quit] Astalavista Baby!")
       }
     },
   ],
