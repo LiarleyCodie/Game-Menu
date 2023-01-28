@@ -11,6 +11,7 @@ body {
   justify-content: flex-start;
   align-items: center;
   font-family: monospace;
+  background: #1e1e1e;
 }
 
 canvas {

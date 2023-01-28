@@ -1,2 +1,6 @@
 const indicatorSprite = new Image()
-window.onload = () => indicatorSprite.src = "src/assets/indicator.png"
+const backgroundTileSprite = new Image()
+window.onload = () => {
+  indicatorSprite.src = "src/assets/indicator.png"
+  backgroundTileSprite.src = "src/assets/bg_tile.png"
+}
