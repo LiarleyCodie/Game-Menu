@@ -20,4 +20,4 @@ The new object need to be similiar to the anothers objects with already exists, 
 
 > _:sweat_smile: By the way... I have try to create an pseudo game engine, hence don't be surprised with you notice the `main.js` messed. I have fail miserably._ :sleeping:
 
-![Preview](https://i.imgur.com/EJUWo0U.gif)
+![Preview](https://i.imgur.com/Xfh9P78.png)
