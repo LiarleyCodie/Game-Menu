@@ -12,7 +12,7 @@ The new object need to be similiar to the anothers objects with already exists, 
 - `lineHeight` will set the spacement between each options.
 
 :closed_book: Explanation of the properties from an option object:
-- `y` property inside the object is necessary. The value of this property is used for set the indicator position (set this property as `undefined` why it is will automatically defined)
+- `y` property inside the object is necessary. The value of this property is used for set the indicator position (set this property as `undefined` because it is will automatically defined)
 - `title` will set the text of this option when you start the menu (text which will be shown).
 - `action` this is the most important property, because is from this option which you can do something, like: start the game scene, or open the load session, etc...
 
