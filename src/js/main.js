@@ -2,8 +2,6 @@ const game = {
   canvas: document.querySelector("#canvas"),
   ctx: this.canvas.getContext("2d"),
   running: false,
-  loop: undefined,
-  FPS: 30,
   currentFrame: 0,
   initialize: function (width, height, bilinearFilter = false) {
     this.canvas.width = width
@@ -12,32 +10,20 @@ const game = {
     if (!bilinearFilter) this.canvas.style.imageRendering = "pixelated"
 
   },
-  fluxcontrol: function (runEl, stopEl, create, update) {
-    if (runEl && stopEl) {
-      runEl.onclick = () => {
-        if (!this.running) {
-          if (create) {
-            create()
-          } else {
-            console.log("main `create()` function don't exists!")
-          }
-          if (update) {
-            update()
-            this.running = true
-            console.log("[RUNNING!]")
-          } else {
-            console.log("main `update()` function don't exists!")
-          }
-        }
+  fluxcontrol: function (runEl, stopEl) {
+    runEl.onclick = () => {
+      if (!this.running) {
+        create()
+        loop()
+        this.running = true
+        console.log("[RUNNING]")
       }
-      stopEl.onclick = () => {
-        if (this.running) {
-          if (this.loop) {
-            window.cancelAnimationFrame(this.loop)
-            this.running = false
-            console.log("[STOPPED!]")
-          }
-        }
+    }
+    stopEl.onclick = () => {
+      if (this.running) {
+        cancelAnimationFrame(interval)
+        this.running = false
+        console.log("[STOPPED]")
       }
     }
   }
@@ -46,20 +32,19 @@ const ctx = game.ctx
 const runEl = document.querySelector("#run")
 const stopEl = document.querySelector("#stop")
 
-game.initialize(520, 448, false)
-game.fluxcontrol(runEl, stopEl, create, loop)
+game.initialize(512, 442, false)
+game.fluxcontrol(runEl, stopEl)
 
-var lastRender = 0
 const FPS = 30
-function loop(timestamp) {
-  const delta = timestamp - lastRender
-
+var timestamp = Date.now()
+var interval = null
+function loop() {
+  interval = requestAnimationFrame(loop)
+  const now = Date.now()
+  const delta = now - timestamp
   if (delta < 1000 / FPS) {
-    game.loop = requestAnimationFrame(loop, delta - FPS)
     return
   }
-
+  timestamp = now
   update()
-
-  game.loop = requestAnimationFrame(loop)
 }

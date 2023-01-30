@@ -1,6 +1,7 @@
 // THIS IS THE MAIN UPDATE FUNCTION!
+var currentScene = createMenuScene()
+
 function update() {
-  background.draw()
-  menu.update()
-  menu.draw()
+  if (currentScene.draw) currentScene.draw()
+  if (currentScene.update) currentScene.update()
 }

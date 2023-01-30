@@ -1,43 +1,39 @@
 const background = {
   instance: {
-    position: {
-      x: 0, 
-      y: 0
-    },
-    size: {
-      width: canvas.width,
-      height: canvas.height
-    },
+    position: { x: 0, y: 0 },
+    size: { width: 512, height: 448 }
   },
   sprite: {
-    clipPosition: {
-      x: 0, 
-      y: 0
-    },
-    clipSize: {
-      width: 16,
-      height: 16
-    }
+    clipPosition: { x: 0, y: 0 },
+    clipSize: { width: 512, height: 442 }
   },
-  draw: function () {
-    // a fórmula que define a quantidade de tiles necessários na horizontal é
-    // Math.floor((canvas.width / 16) + 1) = 33 tiles
-    // a fórmula que define a quantidade de tiles necessários na vertical é
-    // Math.floor(canvas.height / 16) = 28 tiles
+  speed: 1,
+  draw: function() {
+    // background image
+    ctx.drawImage(
+      backgroundSprite,
+      this.sprite.clipPosition.x, this.sprite.clipPosition.y,
+      this.sprite.clipSize.width, this.sprite.clipSize.height,
+      this.instance.position.x,this.instance.position.y,
+      this.instance.size.width, this.instance.size.height,
+    )
 
-    for (let i = 0; i < 28; i++) {
-      // const tileX = this.instance.position.x + (this.sprite.clipSize.width * i)
-      const tileY = this.instance.position.y + (this.sprite.clipSize.height * i)
-      ctx.drawImage(
-        backgroundTileSprite,
-        this.sprite.clipPosition.x, this.sprite.clipPosition.y,
-        this.sprite.clipSize.width, this.sprite.clipSize.height,
-        this.instance.position.x, tileY,
-        this.sprite.clipSize.width, this.sprite.clipSize.height,
-      )
+    ctx.drawImage(
+      backgroundSprite,
+      this.sprite.clipPosition.x, this.sprite.clipPosition.y,
+      this.sprite.clipSize.width, this.sprite.clipSize.height,
+      this.instance.position.x + this.instance.size.width,this.instance.position.y,
+      this.instance.size.width, this.instance.size.height,
+    )
+
+    // background overlay
+    ctx.fillStyle = "rgba(0,0,0,0.5)"
+    ctx.fillRect(0, 0, this.instance.size.width, this.instance.size.height)
+  },
+  update: function() {
+    this.instance.position.x -= this.speed
+    if ((this.instance.position.x + this.instance.size.width) * 2 <= canvas.width) {
+      this.instance.position.x = 0
     }
-    
-    ctx.fillStyle = "rgba(0, 0, 0, 0.4)"
-    ctx.fillRect(0, 0, canvas.width, canvas.height)
   }
 }
