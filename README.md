@@ -1,4 +1,4 @@
-# :video_game: 2D Game Menu :video_game:
+# :video_game: [2D Game Menu](https://liarleycodie.github.io/Game-Menu/) :video_game:
 :coffee: I'm was working in this simple game menu, since the morning till the afternoon. You can select the option from menu just by pressing the `Up` or `Down` arrow keys of your keyboard and pressing `space` or `enter` key you will execute the option. 
 
 :strawberry: You can add new options to this menu. Open the file `menu.js` located in `src\js\scenes\menu`.
